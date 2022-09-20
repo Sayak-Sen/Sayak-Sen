@@ -1,2 +1,150 @@
+package com.gl.lab_assignment;
+
+import java.util.*;
+class Employee
+{
+	String firstname;
+	String lastname;
+	public String getFirstname()
+	{return firstname;}
+	public void setFirstname(String firstname)
+	{this.firstname=firstname;}
+	public String getLastname()
+	{return lastname;}
+	public void setLastname(String lastname)
+	{this.lastname=lastname;}
+	public Employee(String firstname,String lastname)
+	{this.firstname=firstname;
+	 this.lastname=lastname;
+	}
+}
+class Credential_service
+{
+	public char[] generatePassword()
+	{
+		String Cap_Letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String Small_Letters="abcdefghijklmnopqrstuvwxyz";
+		String numbers="012456789";
+		String Sp_Char="@#$%^&*+-/?<>";
+		String values=Cap_Letters+Small_Letters+numbers+Sp_Char;
+		Random random=new Random();
+		char[]password=new char[8];
+		for(int i=0;i<8;i++)
+		{
+			password[i]=values.charAt(random.nextInt(values.length()));
+		
+		}
+		return password;
+	}
+	public String generateEmailAddress(String firstname,String lastname,String department)
+	{
+		return(firstname+lastname+"@"+department+"abc.com");
+	}
+	public void showCredentials(Employee employee,String email,char[]generatedPssword)
+	{
+		System.out.println("Dear"+employee.getFirstname()+"your generated Credentials are as follows");
+		System.out.println("email--->"+email);
+		System.out.print("password--->"+" ");
+		System.out.print(generatedPssword);
+	}
+}
+
+public class Result{
+
+	public static void main(String[] args) {
+		Employee employee=new Employee("Sayak","sen");
+		Credential_service cs=new Credential_service();
+		String generatedEmail;
+		char [] generatedPassword;
+		
+		System.out.println("enter the number from the givnn list");
+		System.out.println("1. technical");
+		System.out.println("2. Admin");
+		System.out.println("3. HumanResourse");
+		System.out.println("4. Legal");
+		
+		Scanner sc =new Scanner(System.in);
+		int option=sc.nextInt();
+		if(option==1)
+		{
+			generatedEmail=cs.generateEmailAddress(employee.getFirstname().toLowerCase(),employee.getLastname().toLowerCase(), "Tech");
+			generatedPassword=cs.generatePassword();
+			cs.showCredentials(employee,generatedEmail,generatedPassword);
+		}
+		else if(option==2)
+		{
+			generatedEmail=cs.generateEmailAddress(employee.getFirstname().toLowerCase(),employee.getLastname().toLowerCase(), "Admine");
+			generatedPassword=cs.generatePassword();
+			cs.showCredentials(employee,generatedEmail,generatedPassword);
+		}
+		else if(option==3)
+		{
+			generatedEmail=cs.generateEmailAddress(employee.getFirstname().toLowerCase(),employee.getLastname().toLowerCase(), "Human Resource");
+			generatedPassword=cs.generatePassword();
+			cs.showCredentials(employee,generatedEmail,generatedPassword);
+		}
+		else if(option==4)
+		{
+			generatedEmail=cs.generateEmailAddress(employee.getFirstname().toLowerCase(),employee.getLastname().toLowerCase(), "Legal");
+			generatedPassword=cs.generatePassword();
+			cs.showCredentials(employee,generatedEmail,generatedPassword);
+		}
+		else
+		{
+			System.out.println("enter a valid option");
+		}
+		sc.close();
+	}
+
+}
+//Sayak Sen Greatlearning lab problem
+//program output
+//enter the number from the givnn list
+//1. technical
+//2. Admin
+//3. HumanResourse
+//4. Legal
+//1
+//DearSayakyour generated Credentials are as follows
+//email--->sayaksen@Techabc.com
+//password---> qPcL0OiH
+
+//enter the number from the givnn list
+//1. technical
+//2. Admin
+//3. HumanResourse
+//4. Legal
+//2
+//DearSayakyour generated Credentials are as follows
+//email--->sayaksen@Admineabc.com
+//password---> azG8vdGi
+
+//enter the number from the givnn list
+//1. technical
+//2. Admin
+//3. HumanResourse
+//4. Legal
+//3
+//DearSayakyour generated Credentials are as follows
+//email--->sayaksen@Human Resourceabc.com
+//password---> 9n26-KX*
+
+//enter the number from the givnn list
+//1. technical
+//2. Admin
+//3. HumanResourse
+//4. Legal
+//4
+//DearSayakyour generated Credentials are as follows
+//email--->sayaksen@Legalabc.com
+//password---> HrkZdy+/
+
+//enter the number from the givnn list
+//1. technical
+//2. Admin
+//3. HumanResourse
+//4. Legal
+//5
+//enter a valid option
 # Auto detect text files and perform LF normalization
 * text=auto
